@@ -43,6 +43,11 @@
 			<version>5.2.2</version>
 		</dependency>
 
+		<dependency>
+			<groupId>in.nandakumarparthasarathi</groupId>
+			<artifactId>birds-buddy</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 
