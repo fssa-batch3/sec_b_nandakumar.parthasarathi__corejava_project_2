@@ -9,15 +9,14 @@ import java.sql.SQLException;
 import io.github.cdimascio.dotenv.Dotenv;
 
 public class ConnectionUtil {
-	
+
 	public static Connection getConnection() {
 
-		Connection connection = null;
-		Dotenv env = Dotenv.load();
-		String url = env.get("DATABASE_HOST");
-		String userName = env.get("DATABASE_USERNAME");
-		String password = env.get("DATABASE_PASSWORD");
+		String url = System.getenv("DATABASE_HOSTNAME");
+		String userName = System.getenv("DATABASE_USERNAME");
+		String password = System.getenv("DATABASE_PASSWORD");
 
+		Connection connection = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(url, userName, password);
@@ -57,5 +56,4 @@ public class ConnectionUtil {
 			e.printStackTrace();
 		}
 	}
-
 }

@@ -1,6 +1,6 @@
 package in.fssa.mynotes.service;
 
-
+import java.util.Set; 
 
 import in.fssa.mynotes.dao.UserDAO;
 import in.fssa.mynotes.exception.PersistanceException;
@@ -10,6 +10,48 @@ import in.fssa.mynotes.model.User;
 import in.fssa.mynotes.validator.UserValidator;
 
 public class UserService {
+	
+	/**
+	 * 
+	 * @return
+	 * @throws ServiceException
+	 */
+	public Set<User> getAllUsers() throws ServiceException {
+		UserDAO userDao = new UserDAO();
+		Set<User> userList = null;
+		try {
+			userList = userDao.findAll();
+			
+		} catch (PersistanceException e) {
+			System.out.println(e);
+			throw new ServiceException(e.getMessage());
+		}
+		return userList;
+	}
+	
+	/**
+	 * 
+	 * @param userId
+	 * @return
+	 * @throws ValidationException
+	 * @throws ServiceException
+	 */
+	
+	public User findById(int userId) throws ValidationException, ServiceException {
+		
+		User user = null;
+		try {
+			UserValidator.isIdValid(userId);
+			UserDAO userDao = new UserDAO();
+			user = userDao.findById(userId);
+			
+		} catch (PersistanceException e) {
+			e.printStackTrace();
+			throw new ServiceException(e.getMessage());
+		}
+		return user;
+	}
+	
 
 	public void create(User newUser) throws ValidationException, ServiceException {
 
@@ -17,7 +59,8 @@ public class UserService {
 			UserValidator.validate(newUser);
 			UserDAO userDao = new UserDAO();
 			userDao.create(newUser);
-		} catch (PersistenceException e) {
+		} catch (PersistanceException e) {
+			System.out.println(e);
 			throw new ServiceException(e.getMessage());
 		}
 	}
@@ -30,7 +73,7 @@ public class UserService {
 			UserDAO newUserDao = new UserDAO();
 			newUserDao.update(id, updateUser);
 			
-		} catch (PersistenceException e) {
+		} catch (PersistanceException e) {
 			e.printStackTrace();
 			throw new ServiceException("Failed to " + e.getMessage());
 		}

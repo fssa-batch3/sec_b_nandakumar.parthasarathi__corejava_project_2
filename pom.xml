@@ -16,11 +16,7 @@
 
 	
 	<dependencies>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.26</version>
-		</dependency>
+
 
 		<!-- JUnit Jupiter API for writing tests -->
 		<dependency>
@@ -36,11 +32,6 @@
 			<artifactId>junit-jupiter-engine</artifactId>
 			<version>5.7.0</version>
 			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>io.github.cdimascio</groupId>
-			<artifactId>java-dotenv</artifactId>
-			<version>5.2.2</version>
 		</dependency>
 
 		<dependency>

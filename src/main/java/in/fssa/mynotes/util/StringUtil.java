@@ -33,12 +33,6 @@ public class StringUtil {
 		}
 	}
 
-	public static void rejectIfInvalidNumber(long number, String inputNumber) throws ValidationException {
-		if (number < 6000000001l || number > 9999999999l) {
-			throw new ValidationException(inputNumber.concat(" must start between 6 - 9 and have 10 digits"));
-		}
-	}
-	
 	public static void rejectIfInvalidEmail(String email) throws ValidationException {
 		
 		String regex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}";  
