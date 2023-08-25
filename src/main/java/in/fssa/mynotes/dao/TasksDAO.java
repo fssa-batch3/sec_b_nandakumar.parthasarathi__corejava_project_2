@@ -20,7 +20,7 @@ public class TasksDAO {
         Set<Tasks> taskList = new HashSet<>();
 
         try {
-            String query = "SELECT * FROM tasks";
+            String query = "SELECT id, name, description, created_by, status FROM tasks";
             con = ConnectionUtil.getConnection();
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();

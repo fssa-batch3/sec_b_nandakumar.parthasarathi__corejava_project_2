@@ -41,8 +41,8 @@ public class UserValidator {
         }
     }
     
-    public static void isIdValid(int id) throws ValidationException {
-        if (id <= 0) {
+    public static void isIdValid(int userId) throws ValidationException {
+        if (userId <= 0) {
             throw new ValidationException("Invalid user ID");
         }
     }

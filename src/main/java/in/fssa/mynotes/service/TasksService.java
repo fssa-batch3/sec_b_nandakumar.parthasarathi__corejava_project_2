@@ -26,8 +26,7 @@ public class TasksService {
 
     public void createTask(Tasks newTask) throws PersistanceException, ValidationException {
     	
-    	TasksValidator validator = new TasksValidator();
-    	validator.validateTask(newTask);
+    	TasksValidator.validateTask(newTask);
         tasksDAO.createTask(newTask);
     }
 

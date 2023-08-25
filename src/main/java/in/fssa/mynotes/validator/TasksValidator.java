@@ -16,24 +16,22 @@ public class TasksValidator {
         // You can add more validation checks for other fields if needed
     }
 
-    private static void validateName(String name) throws ValidationException {
-        if (name == null || name.trim().isEmpty()) {
+    private static void validateName(String taskName) throws ValidationException {
+        if (taskName == null || taskName.trim().isEmpty()) {
             throw new ValidationException("Task name cannot be null ot empty");
         }
-        
-       
     }
     
     
 
-    private static void validateDescription(String description) throws ValidationException {
-        if (description == null || description.trim().isEmpty()) {
+    private static void validateDescription(String tasksDescription) throws ValidationException {
+        if (tasksDescription == null || tasksDescription.trim().isEmpty()) {
             throw new ValidationException("Task description cannot be null or empty");
         }
     }
 
-    private static void validateStatus(String status) throws ValidationException {
-        if (!status.equals("Pending") && !status.equals("In Progress") && !status.equals("Completed")) {
+    private static void validateStatus(String tasksStatus) throws ValidationException {
+        if (!tasksStatus.equals("Pending") && !tasksStatus.equals("In Progress") && !tasksStatus.equals("Completed")) {
             throw new ValidationException("Task status cannot be null or empty");
         }
     }

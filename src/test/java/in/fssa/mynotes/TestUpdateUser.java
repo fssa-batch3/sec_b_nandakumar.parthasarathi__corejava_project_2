@@ -23,7 +23,7 @@ public class TestUpdateUser {
 		newUser.setPassword("NandakumarParthasarathi@123");
 
 		assertDoesNotThrow(() -> {
-			userService.update(1, newUser);
+			userService.updateUser(1, newUser);
 		});
 	}
 
@@ -32,7 +32,7 @@ public class TestUpdateUser {
 	public void testUpdateUserWithInvaidInput() {
 		UserService userService = new UserService();
 		Exception exception = assertThrows(ValidationException.class, () -> {
-			userService.update(0, null);
+			userService.updateUser(0, null);
 		});
 		String expectedMessage = "User cannot be null";
 		String receivedMessage = exception.getMessage();
@@ -51,7 +51,7 @@ public class TestUpdateUser {
 		newUser.setPassword(null);
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
-			userService.update(1, newUser);
+			userService.updateUser(1, newUser);
 		});
 
 		String expectedMessage = "Password cannot be null or empty";
@@ -71,7 +71,7 @@ public class TestUpdateUser {
 		newUser.setName("Nanda");
 		newUser.setPassword("");
 		Exception exception = assertThrows(ValidationException.class, () -> {
-			userService.update(1, newUser);
+			userService.updateUser(1, newUser);
 
 		});
 
@@ -92,7 +92,7 @@ public class TestUpdateUser {
 		newUser.setPassword("nanda66");
 
 		Exception exception = assertThrows(ValidationException.class, () -> {
-			userService.update(1, newUser);
+			userService.updateUser(1, newUser);
 		});
 
 		String expectedMessage = "Name cannot be null or empty";
@@ -112,7 +112,7 @@ public class TestUpdateUser {
 		newUser.setName("");
 		newUser.setPassword("nanda66");
 		Exception exception = assertThrows(ValidationException.class, () -> {
-			userService.update(1, newUser);
+			userService.updateUser(1, newUser);
 
 		});
 
