@@ -52,7 +52,7 @@ public class UserDAO implements UserInterface {
 
 		} catch (SQLException e) {
 			e.printStackTrace();
-//			System.out.println(e.getMessage());
+			System.out.println(e.getMessage());
 			throw new PersistanceException(e.getMessage());
 		} finally {
 			ConnectionUtil.close(con, ps);
@@ -71,6 +71,7 @@ public class UserDAO implements UserInterface {
 
 			ps.setString(1, updateUser.getName());
 			ps.setString(2, updateUser.getPassword());
+			ps.setInt(3, id);
 
 			ps.executeUpdate();
 			System.out.println("User has been updated sucessfully");

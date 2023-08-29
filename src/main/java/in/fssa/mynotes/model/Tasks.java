@@ -50,17 +50,11 @@ public class Tasks {
         this.status = status;
     }
 
-    public String getParent_task() {
-        return parent_task;
-    }
 
-    public void setParent_task(String parent_task) {
-        this.parent_task = parent_task;
-    }
 
     @Override
     public String toString() {
-        return "Task [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
-                + ", parent_task=" + parent_task + "]";
+        return "Task [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status + "]";
     }
+
 }

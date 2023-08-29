@@ -18,6 +18,12 @@
 	<dependencies>
 
 
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.26</version>
+		</dependency>
+
 		<!-- JUnit Jupiter API for writing tests -->
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
@@ -33,6 +39,7 @@
 			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
+		
 	</dependencies>
 
 

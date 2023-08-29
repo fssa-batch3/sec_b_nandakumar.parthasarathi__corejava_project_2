@@ -15,11 +15,16 @@ public class ConnectionUtil {
 		String userName = System.getenv("DATABASE_USERNAME");
 		String password = System.getenv("DATABASE_PASSWORD");
 
-		Connection connection = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Class not found");
+			
+		}
+		Connection connection = null;
+		try {
 			connection = DriverManager.getConnection(url, userName, password);
-
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);

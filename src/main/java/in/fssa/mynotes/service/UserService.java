@@ -1,6 +1,5 @@
 package in.fssa.mynotes.service;
 
-import java.util.Set; 
 
 import in.fssa.mynotes.dao.UserDAO;
 import in.fssa.mynotes.exception.PersistanceException;

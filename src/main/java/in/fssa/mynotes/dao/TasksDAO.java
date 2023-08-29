@@ -20,7 +20,7 @@ public class TasksDAO {
         Set<Tasks> taskList = new HashSet<>();
 
         try {
-            String query = "SELECT id, name, description, created_by, status FROM tasks";
+            String query = "SELECT id, name, description, created_by, status  FROM tasks";
             con = ConnectionUtil.getConnection();
             ps = con.prepareStatement(query);
             rs = ps.executeQuery();
@@ -31,8 +31,6 @@ public class TasksDAO {
                 task.setName(rs.getString("name"));
                 task.setDescription(rs.getString("description"));
                 task.setStatus(rs.getString("status"));
-                task.setParent_task(rs.getString("parent_task"));
-
                 taskList.add(task);
             }
         } catch (SQLException e) {
@@ -50,7 +48,7 @@ public class TasksDAO {
         Set<Tasks> userTaskList = new HashSet<>();
 
         try {
-            String query = "SELECT t.* FROM tasks t JOIN user_tasks ut ON t.id = ut.task_id WHERE ut.user_id = ?";
+            String query = "SELECT t.* FROM tasks t JOIN tasks ut ON t.id = ut.id WHERE ut.id = ?";
             con = ConnectionUtil.getConnection();
             ps = con.prepareStatement(query);
             ps.setInt(1, userId);
@@ -62,8 +60,6 @@ public class TasksDAO {
                 task.setName(rs.getString("name"));
                 task.setDescription(rs.getString("description"));
                 task.setStatus(rs.getString("status"));
-                task.setParent_task(rs.getString("parent_task"));
-
                 userTaskList.add(task);
             }
         } catch (SQLException e) {
@@ -79,14 +75,13 @@ public class TasksDAO {
         PreparedStatement ps = null;
 
         try {
-            String query = "INSERT INTO tasks (name, description, status, parent_task) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO tasks (name, description, status) VALUES (?, ?, ?)";
             con = ConnectionUtil.getConnection();
             ps = con.prepareStatement(query);
 
             ps.setString(1, newTask.getName());
             ps.setString(2, newTask.getDescription());
             ps.setString(3, newTask.getStatus());
-            ps.setString(4, newTask.getParent_task());
 
             ps.executeUpdate();
             System.out.println("Task has been created successfully");

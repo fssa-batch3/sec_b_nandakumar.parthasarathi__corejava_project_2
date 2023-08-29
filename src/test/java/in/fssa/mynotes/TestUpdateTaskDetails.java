@@ -19,8 +19,8 @@ public class TestUpdateTaskDetails {
         // Create a task for testing
         Tasks newTask = new Tasks();
         newTask.setId(2);
-        newTask.setName("Practice match");
-        newTask.setDescription("Throwing Sets for one hour");
+        newTask.setName("Practice match against Airborne");
+        newTask.setDescription("We want good intense game");
         newTask.setStatus("completed");
 
         assertDoesNotThrow(() -> {

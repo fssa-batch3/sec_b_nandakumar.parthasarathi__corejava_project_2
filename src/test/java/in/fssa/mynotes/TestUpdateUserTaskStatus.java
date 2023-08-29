@@ -15,8 +15,8 @@ public class TestUpdateUserTaskStatus {
 
 	        // Create a task for testing
 	        Tasks newTask = new Tasks();
-	        newTask.setId(1);
-	        newTask.setStatus("completed");
+	        newTask.setId(2);
+	        newTask.setStatus("Pending");
 
 	        assertDoesNotThrow(() -> {
 	            tasksService.updateTaskStatus(newTask.getId(), newTask.getStatus() );

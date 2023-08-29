@@ -6,7 +6,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-import in.fssa.mynotes.exception.ServiceException;
 import in.fssa.mynotes.exception.ValidationException;
 import in.fssa.mynotes.model.User;
 import in.fssa.mynotes.service.UserService;
@@ -19,9 +18,9 @@ public class TestCreateUser {
 
 		UserService userService = new UserService();
 		User newUser = new User();
-		newUser.setEmail("gokul@gmail.com");
-		newUser.setName("Gokul");
-		newUser.setPassword("Gokul&12345");
+		newUser.setName("Sandy");
+		newUser.setEmail("sandy@gmail.com");
+		newUser.setPassword("Sandy&12345");
 
 		assertDoesNotThrow(() -> {
 			userService.createUser(newUser);
