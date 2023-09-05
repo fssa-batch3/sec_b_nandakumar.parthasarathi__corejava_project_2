@@ -5,21 +5,19 @@ CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL,
-    password VARCHAR(255) NOT NULL
+    password VARCHAR(255) NOT NULL,
+    is_active TINYINT(1) DEFAULT 1
 );
 
 CREATE TABLE IF NOT EXISTS tasks (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255) NOT NULL,
     description VARCHAR(255),
     created_by INT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     status VARCHAR(255),
-    parent_task INT,
-    FOREIGN KEY (created_by) REFERENCES users(id),
-    FOREIGN KEY (parent_task) REFERENCES tasks(id)
+    FOREIGN KEY (created_by) REFERENCES users(id)
 );
-
 
 INSERT INTO users (name, email, password)
 VALUES ('Nandakumar', 'nandakumarp3003@gmail.com', 'Nanda@123');
@@ -27,17 +25,20 @@ VALUES ('Nandakumar', 'nandakumarp3003@gmail.com', 'Nanda@123');
 INSERT INTO users (name, email, password)
 VALUES ('Surya', 'surya@example.com', 'Password123');
 
-SELECT * FROM Users;
-INSERT INTO tasks (id, name, description, created_by, status)
-VALUES (1, 'Java Documentation', 'I would finish my Java documentation', 1, 'In Progress');
+-- Corrected the SELECT statement to use the 'users' table
+SELECT * FROM users;
 
-INSERT INTO tasks (id, name, description, created_by, status)
-VALUES (2, 'Practice', 'Throwing Sets for one hour', 1, 'In Progress');
+-- For tasks table, corrected the column names in the INSERT statements
+INSERT INTO tasks (name, description, status, created_by)
+VALUES ('Java Documentation', 'I would finish my Java documentation', 'In Progress', 1);
 
-INSERT INTO tasks (id, name, description, created_by, status, parent_task)
-VALUES (3, 'ER Diagram', 'Mind map for my project', 1, 'Completed', 1);
+INSERT INTO tasks (name, description, status, created_by)
+VALUES ('Practice', 'Throwing Sets for one hour', 'In Progress', 1);
 
-INSERT INTO tasks (id, name, description, created_by, status)
-VALUES (4, 'Tournament', 'Going Bangalore for Sakkath Tournament', 2, 'Pending');
+INSERT INTO tasks (name, description, status, created_by)
+VALUES ('ER Diagram', 'Mind map for my project', 'Completed', 1);
 
-SELECT * FROM Tasks;
+INSERT INTO tasks (name, description, status, created_by)
+VALUES ('Tournament', 'Going Bangalore for Sakkath Tournament', 'Pending', 2);
+
+SELECT * FROM tasks;

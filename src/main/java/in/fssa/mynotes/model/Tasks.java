@@ -5,17 +5,18 @@ public class Tasks {
     private String name;
     private String description;
     private String status;
-    private String parent_task;
+    private int createdBy; // Assuming createdBy is an integer representing user ID
+    private int parentTask; // Assuming parentTask is an integer representing parent task ID
 
     public Tasks() {
     }
 
-    public Tasks(int id, String name, String description, String status, String parent_task) {
+    public Tasks(int id, String name, String description, String status, int createdBy) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
-        this.parent_task = parent_task;
+        this.createdBy = createdBy;
     }
 
     public int getId() {
@@ -50,11 +51,19 @@ public class Tasks {
         this.status = status;
     }
 
+    public int getCreatedBy() {
+        return createdBy;
+    }
 
+    public void setCreatedBy(int createdBy) {
+        this.createdBy = createdBy;
+    }
+
+  
 
     @Override
     public String toString() {
-        return "Task [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status + "]";
+        return "Tasks [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
+                + ", createdBy=" + createdBy + ", parentTask=" + parentTask + "]";
     }
-
 }

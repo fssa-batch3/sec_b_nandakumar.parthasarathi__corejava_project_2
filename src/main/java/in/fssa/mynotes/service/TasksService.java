@@ -24,26 +24,23 @@ public class TasksService {
         return tasksDAO.findAllUserTasks(userId);
     }
 
+    public Tasks getTaskById(int taskId) throws PersistanceException {
+        return tasksDAO.findTaskById(taskId);
+    }
+
     public void createTask(Tasks newTask) throws PersistanceException, ValidationException {
-    	
-    	TasksValidator.validateTask(newTask);
+        TasksValidator.validateTask(newTask);
         tasksDAO.createTask(newTask);
     }
 
-    public void updateTask(int taskId, Tasks updatedName) throws PersistanceException {
-        tasksDAO.updateTask(taskId, updatedName);
+    public void updateTask(int taskId, Tasks newTask) throws PersistanceException {
+        tasksDAO.updateTask(taskId, newTask);
     }
 
-    public void updateUserTaskDetails(int userId, int taskId, Tasks updatedTask) throws PersistanceException {
-        tasksDAO.updateUserTaskDetails(userId, taskId, updatedTask);
-    }
-
-    public void updateTaskStatus(int taskId, String status)throws PersistanceException{
-    	tasksDAO.updateTaskStatus(taskId, status);
-    
-    }
-    
     public void deleteTask(int taskId) throws PersistanceException {
         tasksDAO.deleteTask(taskId);
     }
+
+	
+
 }

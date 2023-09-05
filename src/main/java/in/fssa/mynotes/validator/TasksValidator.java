@@ -31,9 +31,10 @@ public class TasksValidator {
     }
 
     private static void validateStatus(String tasksStatus) throws ValidationException {
-    	
-        if (tasksStatus == null || tasksStatus.trim().isEmpty() || !tasksStatus.equals("Pending") || !tasksStatus.equals("Progress") || !tasksStatus.equals("Completed")) {
-            throw new ValidationException("Task status cannot be null or empty");
+        if (tasksStatus == null || tasksStatus.trim().isEmpty() ||
+                (!tasksStatus.equals("Pending") && !tasksStatus.equals("Progress") && !tasksStatus.equals("Completed"))) {
+            throw new ValidationException("Task status cannot be null, empty, or invalid");
         }
     }
+
 }

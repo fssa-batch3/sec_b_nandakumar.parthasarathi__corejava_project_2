@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.Random;
+
 import org.junit.jupiter.api.Test;
 
 import in.fssa.mynotes.exception.ValidationException;
@@ -12,15 +14,28 @@ import in.fssa.mynotes.service.UserService;
 
 public class TestCreateUser {
 
+	private Random random = new Random();
+
+	public String generateRandomString(int length) {
+		String characters = "abcdefghijklmnopqrstuvwxyz";
+		StringBuilder randomString = new StringBuilder();
+
+		for (int i = 0; i < length; i++) {
+			int index = random.nextInt(characters.length());
+			randomString.append(characters.charAt(index));
+		}
+		return randomString.toString();
+	}
+
 	// Valid Input
 	@Test
 	public void testCreateUserWithValidInput() {
 
 		UserService userService = new UserService();
 		User newUser = new User();
-		newUser.setName("Sandy");
-		newUser.setEmail("sandy@gmail.com");
-		newUser.setPassword("Sandy&12345");
+		newUser.setName("Ram");
+		newUser.setEmail(generateRandomString(5) + "@gmail.com");
+		newUser.setPassword("Ram@12345");
 
 		assertDoesNotThrow(() -> {
 			userService.createUser(newUser);
@@ -163,8 +178,6 @@ public class TestCreateUser {
 		assertTrue(expectedMessage.equals(receivedMessage));
 	}
 
-	
-	
 	// Name Pattern check
 	@Test
 	public void testUserWithNameInValidPattern() {
@@ -227,7 +240,5 @@ public class TestCreateUser {
 		assertTrue(expectedMessage.equals(receivedMessage));
 
 	}
-	
 
-	
 }

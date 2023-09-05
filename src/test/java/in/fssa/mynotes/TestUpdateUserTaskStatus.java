@@ -9,18 +9,17 @@ import in.fssa.mynotes.service.TasksService;
 
 public class TestUpdateUserTaskStatus {
 
-	 @Test
-	    void testUpdateTaskName() {
-	        TasksService tasksService = new TasksService();
+    @Test
+    void testUpdateTaskStatus() {
+        TasksService tasksService = new TasksService();
 
-	        // Create a task for testing
-	        Tasks newTask = new Tasks();
-	        newTask.setId(2);
-	        newTask.setStatus("Pending");
+        // Create a task for testing
+        Tasks updatedTask = new Tasks();
+        updatedTask.setId(2);
+        updatedTask.setStatus("Pending"); // New status
 
-	        assertDoesNotThrow(() -> {
-	            tasksService.updateTaskStatus(newTask.getId(), newTask.getStatus() );
-	        });
-	    }
-
+        assertDoesNotThrow(() -> {
+            tasksService.updateTask(updatedTask.getId(), updatedTask);
+        });
+    }
 }

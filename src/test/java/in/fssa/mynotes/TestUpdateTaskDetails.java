@@ -1,12 +1,9 @@
 package in.fssa.mynotes;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import in.fssa.mynotes.exception.ValidationException;
 import in.fssa.mynotes.model.Tasks;
 import in.fssa.mynotes.service.TasksService;
 
@@ -19,14 +16,12 @@ public class TestUpdateTaskDetails {
         // Create a task for testing
         Tasks newTask = new Tasks();
         newTask.setId(2);
-        newTask.setName("Practice match against Airborne");
-        newTask.setDescription("We want good intense game");
-        newTask.setStatus("completed");
+        newTask.setName("Practice match against stall7");
+        newTask.setDescription("We want victory or intense neck to neck game");
+        newTask.setStatus("Pending");
 
         assertDoesNotThrow(() -> {
-            tasksService.updateTask(newTask.getId(),newTask );
+            tasksService.updateTask(newTask.getId(), newTask);
         });
-
     }
-
 }

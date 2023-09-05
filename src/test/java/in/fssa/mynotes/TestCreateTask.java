@@ -16,9 +16,11 @@ public class TestCreateTask {
     public void testCreateTaskWithValidInput() {
         TasksService tasksService = new TasksService();
         Tasks newTask = new Tasks();
-        newTask.setName("wash your Clothes");
-        newTask.setDescription("Five Shirts and Five Pants");
-        newTask.setStatus("Pending"); // Valid status value
+        newTask.setName("Give rent");
+        newTask.setDescription("Go to nanthanam and give the rent amout to the house owner");
+        newTask.setStatus("Completed");
+        newTask.setCreatedBy(1);
+
 
         assertDoesNotThrow(() -> {
             tasksService.createTask(newTask);
@@ -114,7 +116,7 @@ public class TestCreateTask {
         Exception exception = assertThrows(ValidationException.class, () -> {
             tasksService.createTask(newTask);
         });
-        String expectedMessage = "Task status cannot be null or empty";
+        String expectedMessage = "Task status cannot be null, empty, or invalid";
         String receivedMessage = exception.getMessage();
         System.out.println(receivedMessage);
         assertTrue(expectedMessage.equals(receivedMessage));
@@ -131,29 +133,13 @@ public class TestCreateTask {
         Exception exception = assertThrows(ValidationException.class, () -> {
             tasksService.createTask(newTask);
         });
-        String expectedMessage = "Task status cannot be null or empty";
+        String expectedMessage = "Task status cannot be null, empty, or invalid";
         String receivedMessage = exception.getMessage();
         System.out.println(receivedMessage);
         assertTrue(expectedMessage.equals(receivedMessage));
     }
     
-//    @Test
-//    public void testCreateTaskWithEmptyStatus() {
-//        TasksService tasksService = new TasksService();
-//        Tasks newTask = new Tasks();
-//        newTask.setName("Task Name");
-//        newTask.setDescription("This is a description");
-//        newTask.setStatus("");
-//
-//        Exception exception = assertThrows(ValidationException.class, () -> {
-//            tasksService.createTask(newTask);
-//        });
-//        String expectedMessage = "Task status cannot be null or empty";
-//        String receivedMessage = exception.getMessage();
-//        System.out.println(receivedMessage);
-//        assertTrue(expectedMessage.equals(receivedMessage));
-//    }
-
+ 
     
     // Additional test cases can be added here to cover more scenarios
 }

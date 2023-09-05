@@ -19,11 +19,11 @@ public class TestUpdateUser {
 
 		User newUser = new User();
 		newUser.setEmail("thara@gmail.com");
-		newUser.setName("Tharakai");
-		newUser.setPassword("Thara@12345");
+		newUser.setName("Thara");
+		newUser.setPassword("Thara@57");
 
 		assertDoesNotThrow(() -> {
-			userService.updateUser(3, newUser);
+			userService.updateUser(2, newUser);
 		});
 	}
 
