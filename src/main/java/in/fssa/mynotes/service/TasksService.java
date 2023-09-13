@@ -6,6 +6,7 @@ import in.fssa.mynotes.dao.TasksDAO;
 import in.fssa.mynotes.exception.PersistanceException;
 import in.fssa.mynotes.exception.ValidationException;
 import in.fssa.mynotes.model.Tasks;
+import in.fssa.mynotes.model.User;
 import in.fssa.mynotes.validator.TasksValidator;
 
 public class TasksService {
@@ -40,7 +41,9 @@ public class TasksService {
     public void deleteTask(int taskId) throws PersistanceException {
         tasksDAO.deleteTask(taskId);
     }
+    
+  
 
 	
 
-}
+} 

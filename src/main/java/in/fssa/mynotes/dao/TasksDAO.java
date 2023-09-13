@@ -9,6 +9,7 @@ import java.util.Set;
 
 import in.fssa.mynotes.exception.PersistanceException;
 import in.fssa.mynotes.model.Tasks;
+import in.fssa.mynotes.model.User;
 import in.fssa.mynotes.util.ConnectionUtil;
 
 public class TasksDAO {
@@ -102,7 +103,8 @@ public class TasksDAO {
             ConnectionUtil.close(con, ps, rs);
         }
     }
-
+    
+    
 
     public void createTask(Tasks newTask) throws PersistanceException {
         Connection con = null;
@@ -220,5 +222,5 @@ public class TasksDAO {
         }
     }
 
-
+   
 }
