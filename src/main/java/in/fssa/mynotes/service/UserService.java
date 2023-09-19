@@ -61,12 +61,10 @@ public class UserService {
         // You can add additional validation or processing logic here if needed
         try {
 			UserDAO userDAO = new UserDAO();
-			user = userDAO.findUserByEmail(email);
+			user = UserDAO.findUserByEmail(email);
 		} catch (PersistanceException e) {
 			e.printStackTrace();
 		}
         return user;
-    }
-
-	
+    }	
 }

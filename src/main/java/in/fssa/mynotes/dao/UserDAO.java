@@ -138,7 +138,7 @@ public class UserDAO implements UserInterface {
     }
     
     
-    public User findUserByEmail(String email) throws PersistanceException {
+    public static User findUserByEmail(String email) throws PersistanceException {
         Connection con = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -156,6 +156,7 @@ public class UserDAO implements UserInterface {
                 user.setId(rs.getInt("id"));
                 user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
+                
             }
         } catch (SQLException e) {
             throw new PersistanceException("Error while fetching user by email: " + e.getMessage());

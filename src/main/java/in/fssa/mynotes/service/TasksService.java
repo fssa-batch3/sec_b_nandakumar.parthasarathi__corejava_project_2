@@ -3,6 +3,7 @@ package in.fssa.mynotes.service;
 import java.util.Set;
 
 import in.fssa.mynotes.dao.TasksDAO;
+import in.fssa.mynotes.dao.UserDAO;
 import in.fssa.mynotes.exception.PersistanceException;
 import in.fssa.mynotes.exception.ValidationException;
 import in.fssa.mynotes.model.Tasks;
@@ -20,10 +21,7 @@ public class TasksService {
     public Set<Tasks> getAllTasks() throws PersistanceException {
         return tasksDAO.findAllTasks();
     }
-
-    public Set<Tasks> getAllUserTasks(int userId) throws PersistanceException {
-        return tasksDAO.findAllUserTasks(userId);
-    }
+    
 
     public Tasks getTaskById(int taskId) throws PersistanceException {
         return tasksDAO.findTaskById(taskId);
@@ -41,9 +39,15 @@ public class TasksService {
     public void deleteTask(int taskId) throws PersistanceException {
         tasksDAO.deleteTask(taskId);
     }
-    
-  
 
-	
-
+	public Set<Tasks> getAllUserTasks(int id) {
+		Set<Tasks> tasks = null;
+		try {
+			tasks = tasksDAO.findAllUserTasks(id);
+			
+		} catch (PersistanceException e) {
+			e.printStackTrace();	
+		}
+		return tasks;
+	}
 } 

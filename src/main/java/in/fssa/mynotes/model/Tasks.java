@@ -6,7 +6,6 @@ public class Tasks {
     private String description;
     private String status;
     private int createdBy; // Assuming createdBy is an integer representing user ID
-    private int parentTask; // Assuming parentTask is an integer representing parent task ID
 
     public Tasks() {
     }
@@ -64,6 +63,6 @@ public class Tasks {
     @Override
     public String toString() {
         return "Tasks [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
-                + ", createdBy=" + createdBy + ", parentTask=" + parentTask + "]";
+                + ", createdBy=" + createdBy + "]";
     }
 }

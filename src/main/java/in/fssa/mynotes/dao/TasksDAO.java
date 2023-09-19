@@ -50,7 +50,7 @@ public class TasksDAO {
         Set<Tasks> userTaskList = new HashSet<>();
 
         try {
-            String query = "SELECT t.* FROM tasks t JOIN tasks ut ON t.id = ut.id WHERE ut.id = ?";
+            String query = "SELECT id, name, description, created_by, status FROM tasks WHERE created_by = ?";
             con = ConnectionUtil.getConnection();
             ps = con.prepareStatement(query);
             ps.setInt(1, userId);
@@ -62,6 +62,7 @@ public class TasksDAO {
                 task.setName(rs.getString("name"));
                 task.setDescription(rs.getString("description"));
                 task.setStatus(rs.getString("status"));
+                task.setCreatedBy(Integer.parseInt(rs.getString("created_by")));
                 userTaskList.add(task);
             }
         } catch (SQLException e) {
@@ -105,7 +106,6 @@ public class TasksDAO {
     }
     
     
-
     public void createTask(Tasks newTask) throws PersistanceException {
         Connection con = null;
         PreparedStatement ps = null;
