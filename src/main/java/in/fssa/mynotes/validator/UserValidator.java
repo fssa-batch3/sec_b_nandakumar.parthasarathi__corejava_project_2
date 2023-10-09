@@ -8,7 +8,7 @@ import in.fssa.mynotes.model.User;
 public class UserValidator {
     
 	private static final String NAME_PATTERN = "^[A-Za-z][A-Za-z\\s]*$";
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9]+([a-zA-Z0-9_+\\-\\. ]*[a-zA-Z0-9]+)?@[a-zA-Z0-9]+([a-zA-Z0-9\\-\\.]*[a-zA-Z0-9])?\\.[a-zA-Z]{2,}$";
+	private static final String EMAIL_PATTERN = "^[a-z0-9]+([a-z0-9_+\\-\\. ]*[a-z0-9]+)?@[a-z0-9]+([a-z0-9\\-\\.]*[a-z0-9])?\\.[a-z]{2,}$";
     private static final String PASSWORD_PATTERN = "(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{8,}";
     
     public static void validate(User user) throws ValidationException {
@@ -46,4 +46,6 @@ public class UserValidator {
             throw new ValidationException("Invalid user ID");
         }
     }
+    
+    
 }

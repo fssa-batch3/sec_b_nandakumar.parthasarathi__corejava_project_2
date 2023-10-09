@@ -222,7 +222,7 @@ public class TestCreateUser {
 
 	// Password Pattern check
 	@Test
-	public void testUserWithPasswordInValidPattern() {
+	public void testUserWithPasswordInValidPattern() { 
 
 		UserService userService = new UserService();
 		User newUser = new User();
