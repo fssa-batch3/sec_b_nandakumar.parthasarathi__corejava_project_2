@@ -1,7 +1,5 @@
 package in.fssa.mynotes.model;
 
-import java.util.Arrays;
-
 public enum Priority {
     HIGH("High"), MEDIUM("Medium"), LOW("Low");
 

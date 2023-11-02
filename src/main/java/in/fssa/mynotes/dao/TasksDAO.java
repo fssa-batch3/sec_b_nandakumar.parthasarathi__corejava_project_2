@@ -24,7 +24,7 @@ public class TasksDAO {
 	        // Modify the SQL query to include an ORDER BY clause
 	        String query = "SELECT id, name, description, created_by, priority, status, due_date " +
 	                       "FROM tasks " +
-	                       "WHERE created_by = ? " +
+	                       "WHERE created_by = ? AND is_deleted = 0 " +
 	                       "ORDER BY created_at DESC"; // Order by created_at in descending order
 	                       
 	        con = ConnectionUtil.getConnection();
@@ -179,26 +179,26 @@ public class TasksDAO {
 	}
 
 	public void deleteTask(int taskId) throws PersistanceException {
-		Connection con = null;
-		PreparedStatement ps = null;
+	    Connection con = null;
+	    PreparedStatement ps = null;
 
-		try {
-			String query = "DELETE FROM tasks WHERE id = ?";
-			con = ConnectionUtil.getConnection();
-			ps = con.prepareStatement(query);
-			ps.setInt(1, taskId);
+	    try {
+	        String query = "UPDATE tasks SET is_deleted = 1 WHERE id = ?";
+	        con = ConnectionUtil.getConnection();
+	        ps = con.prepareStatement(query);
+	        ps.setInt(1, taskId);
 
-			ps.executeUpdate();
-			System.out.println("Task has been deleted successfully");
+	        ps.executeUpdate();
+	        System.out.println("Task deleted successfully");
 
-		} catch (SQLException e) {
-			throw new PersistanceException("Error while deleting task: " + e.getMessage());
-		} finally {
-			ConnectionUtil.close(con, ps);
-		}
+	    } catch (SQLException e) {
+	        throw new PersistanceException("Error while soft-deleting task: " + e.getMessage());
+	    } finally {
+	        ConnectionUtil.close(con, ps);
+	    }
 	}
-	
-	
+
+
 	public List<TaskHistory> findTaskHistoryByTaskId(int taskId) throws PersistanceException {
 	    Connection con = null;
 	    PreparedStatement ps = null;

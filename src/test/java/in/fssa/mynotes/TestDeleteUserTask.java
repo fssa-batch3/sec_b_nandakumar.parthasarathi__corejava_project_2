@@ -15,7 +15,7 @@ public class TestDeleteUserTask {
         
         // Create a task for testing
         Tasks newTask = new Tasks();
-        newTask.setId(6);
+        newTask.setId(4);
         
         // Delete the created task
         assertDoesNotThrow(() -> {

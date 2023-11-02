@@ -25,7 +25,7 @@ public class TestCreateTask {
 	        newTask.setName("watch social Network");
 	        newTask.setDescription("To gain some knowledge");
 	        newTask.setStatus("Pending");
-	        newTask.setCreatedBy(2);
+	        newTask.setCreatedBy(1);
 	        newTask.setPriority("High");
 
 	        // Create a DateTimeFormatter for the input format

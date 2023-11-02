@@ -7,23 +7,23 @@ public class Tasks {
     private String name;
     private String description;
     private String status;
-    private int createdBy; // Assuming createdBy is an integer representing user ID
-    private Priority priority; // Use the 'Priority' enum
-    private LocalDateTime dueDate; // Added due date property
-//    private String duration; // Combined duration in days and minutes as a string (e.g., "2 days 30 minutes")
+    private int createdBy; 
+    private Priority priority; 
+    private LocalDateTime dueDate;
+    private boolean is_deleted;
 
     public Tasks() {
     }
 
-    public Tasks(int id, String name, String description, String status, int createdBy, Priority priority, LocalDateTime dueDate, String duration) {
+    public Tasks(int id, String name, String description, String status, int createdBy, Priority priority, LocalDateTime dueDate, String duration , boolean is_deleted) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.status = status;
         this.createdBy = createdBy;
-        this.priority = priority; // Initialize the 'priority' property
-        this.dueDate = dueDate; // Initialize the 'dueDate' property
-//        this.duration = duration; // Initialize the 'duration' property
+        this.priority = priority; 
+        this.dueDate = dueDate;
+        this.is_deleted = is_deleted;
     }
 
     public int getId() {
@@ -85,33 +85,21 @@ public class Tasks {
     public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
+    
+    public boolean getIsDeleted() {
+        return is_deleted;
+    }
 
-//    public String getDuration() {
-//        return duration;
-//    }
-//
-//    public void setDuration(String duration) {
-//        this.duration = duration;
-//    }
-
-    // Calculate and set the duration based on the due date and current date
-//    public void calculateDuration() {
-//        if (dueDate != null) {
-//            long timeDifferenceMillis = dueDate.getTime() - new Date().getTime();
-//            long days = TimeUnit.MILLISECONDS.toDays(timeDifferenceMillis);
-//            long minutes = TimeUnit.MILLISECONDS.toMinutes(timeDifferenceMillis) % 60;
-//            this.duration = days + " days " + minutes + " minutes";
-//        }
-//    }
-
+    public void getIsDeleted(boolean is_deleted) {
+        this.is_deleted = is_deleted;
+    }
+    
+    
     @Override
     public String toString() {
         return "Tasks [id=" + id + ", name=" + name + ", description=" + description + ", status=" + status
-                + ", createdBy=" + createdBy + ", priority=" + priority + ", dueDate=" + dueDate + "]";
+                + ", createdBy=" + createdBy + ", priority=" + priority + ", dueDate=" + dueDate + ", is_deleted=" + is_deleted + "]";
     }
-
-	
-
 	
 }
 
