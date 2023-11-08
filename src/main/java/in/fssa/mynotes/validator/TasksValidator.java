@@ -64,20 +64,4 @@ public class TasksValidator {
             throw new ValidationException("Due date cannot be null");
         }
     }
-
-//    private static void validateDurationHours(String durationHours) throws ValidationException {
-//        if (durationHours == null || durationHours.trim().isEmpty()) {
-//            throw new ValidationException("Duration hours cannot be null or empty");
-//        }
-//
-//        try {
-//            int hours = Integer.parseInt(durationHours);
-//            if (hours < 0) {
-//                throw new ValidationException("Duration hours cannot be negative");
-//            }
-//            // You can add more specific validation rules for duration hours if needed
-//        } catch (NumberFormatException e) {
-//            throw new ValidationException("Invalid duration hours format");
-//        }
-//    }
 }
